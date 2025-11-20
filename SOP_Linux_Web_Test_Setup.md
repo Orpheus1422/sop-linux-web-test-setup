@@ -1,129 +1,132 @@
-Purpose
+
+# Standard Operating Procedure: Setup a Virtual Linux Server for Web Application Testing
+
+**Document Version:** 1.0  
+**Effective Date:** October 26, 2023  
+**Author:** DevOps Team  
+**Status:** Approved
+
+---
+
+## Document Approval
+
+| Role | Name | Signature | Date |
+|------|------|------------|------|
+| Author | John Smith | | 2023-10-26 |
+| Reviewer | Maria Garcia | | 2023-10-27 |
+| Approver | Robert Chen | | 2023-10-28 |
+
+---
+
+## Table of Contents
+1. [Purpose](#purpose)
+2. [Scope](#scope)
+3. [Definitions](#definitions)
+4. [Prerequisites](#prerequisites)
+5. [Resource Requirements](#resource-requirements)
+6. [Procedure Steps](#procedure-steps)
+7. [Software Installation](#software-installation)
+8. [Validation Testing](#validation-testing)
+9. [Troubleshooting](#troubleshooting)
+10. [References](#references)
+11. [Revision History](#revision-history)
+
+---
+
+## Purpose
+
 This Standard Operating Procedure (SOP) establishes the standardized process for deploying virtual Linux servers dedicated to web application testing environments. The procedure ensures consistent, secure, and reproducible server configurations that meet organizational standards for quality assurance and development testing.
 
-Scope
+## Scope
+
 This SOP applies to:
-
-Quality Assurance Engineers
-
-DevOps Engineers
-
-System Administrators
-
-Development Teams
-
-IT Operations Staff
+- Quality Assurance Engineers
+- DevOps Engineers
+- System Administrators
+- Development Teams
+- IT Operations Staff
 
 The procedure covers environments used for:
+- Functional testing
+- Integration testing
+- Performance testing
+- Security vulnerability testing
+- User acceptance testing (UAT)
 
-Functional testing
+## Definitions
 
-Integration testing
+- **LEMP Stack**: Linux, Nginx, MySQL/MariaDB, PHP/Python
+- **CI/CD**: Continuous Integration/Continuous Deployment
+- **VM**: Virtual Machine
+- **Containerization**: OS-level virtualization method
+- **Reverse Proxy**: Server that handles client requests and forwards them to backend services
 
-Performance testing
+## Prerequisites
 
-Security vulnerability testing
+### Access Requirements
+- VMware vSphere 7.0+ or equivalent hypervisor access
+- SSH key-based authentication setup
+- Organizational VPN access (if applicable)
+- Git repository access
 
-User acceptance testing (UAT)
+### Technical Requirements
+- Ubuntu Server 22.04 LTS ISO image
+- Network configuration details
+- Storage allocation approval
+- Backup strategy defined
 
-Definitions
-LEMP Stack: Linux, Nginx, MySQL/MariaDB, PHP/Python
+## Resource Requirements
 
-CI/CD: Continuous Integration/Continuous Deployment
+### Virtual Machine Specifications
+| Resource | Development | Testing | Production-like |
+|----------|-------------|---------|-----------------|
+| vCPUs | 2 | 4 | 8 |
+| Memory | 4GB | 8GB | 16GB |
+| Storage | 50GB | 100GB | 200GB |
+| Network | NAT | Bridged | Bridged |
 
-VM: Virtual Machine
+### Recommended Configuration
+- **Hostname**: `web-test-app-01`
+- **OS**: Ubuntu Server 22.04 LTS
+- **Disk Layout**: 
+  - Root partition: 40GB
+  - Swap: 4GB
+  - /var: 6GB (extra space for logs)
+- **Network**: Static IP assignment preferred
 
-Containerization: OS-level virtualization method
+## Procedure Steps
 
-Reverse Proxy: Server that handles client requests and forwards them to backend services
+### Phase 1: Virtual Machine Deployment
 
-Prerequisites
-Access Requirements
-VMware vSphere 7.0+ or equivalent hypervisor access
+#### Step 1.1: VM Creation
+1. Access VMware vSphere Client
+2. Navigate to target cluster/datacenter
+3. Right-click → "New Virtual Machine"
+4. Select "Custom" configuration type
+5. Specify name: `web-test-app-01`
 
-SSH key-based authentication setup
+#### Step 1.2: Resource Allocation
+1. Configure hardware compatibility: ESXi 7.0+
+2. Set guest OS: Ubuntu Linux (64-bit)
+3. Allocate resources per specifications
+4. Select thin provisioned disk
+5. Configure network adapter
 
-Organizational VPN access (if applicable)
+#### Step 1.3: OS Installation
+1. Mount Ubuntu 22.04 LTS ISO
+2. Power on VM and begin installation
+3. Configure:
+   - Language: English
+   - Keyboard: US English
+   - Network: Static IP (if required)
+   - Storage: Use entire disk with LVM
+   - Profile: Set user credentials
+   - SSH: Install OpenSSH server
 
-Git repository access
+### Phase 2: System Configuration
 
-Technical Requirements
-Ubuntu Server 22.04 LTS ISO image
-
-Network configuration details
-
-Storage allocation approval
-
-Backup strategy defined
-
-Resource Requirements
-Virtual Machine Specifications
-Resource	Development	Testing	Production-like
-vCPUs	2	4	8
-Memory	4GB	8GB	16GB
-Storage	50GB	100GB	200GB
-Network	NAT	Bridged	Bridged
-Recommended Configuration
-Hostname: web-test-app-01
-
-OS: Ubuntu Server 22.04 LTS
-
-Disk Layout:
-
-Root partition: 40GB
-
-Swap: 4GB
-
-/var: 6GB (extra space for logs)
-
-Network: Static IP assignment preferred
-
-Procedure Steps
-Phase 1: Virtual Machine Deployment
-Step 1.1: VM Creation
-Access VMware vSphere Client
-
-Navigate to target cluster/datacenter
-
-Right-click → "New Virtual Machine"
-
-Select "Custom" configuration type
-
-Specify name: web-test-app-01
-
-Step 1.2: Resource Allocation
-Configure hardware compatibility: ESXi 7.0+
-
-Set guest OS: Ubuntu Linux (64-bit)
-
-Allocate resources per specifications
-
-Select thin provisioned disk
-
-Configure network adapter
-
-Step 1.3: OS Installation
-Mount Ubuntu 22.04 LTS ISO
-
-Power on VM and begin installation
-
-Configure:
-
-Language: English
-
-Keyboard: US English
-
-Network: Static IP (if required)
-
-Storage: Use entire disk with LVM
-
-Profile: Set user credentials
-
-SSH: Install OpenSSH server
-
-Phase 2: System Configuration
-Step 2.1: Initial Setup
-bash
+#### Step 2.1: Initial Setup
+```bash
 # Update system
 sudo apt update && sudo apt upgrade -y
 
