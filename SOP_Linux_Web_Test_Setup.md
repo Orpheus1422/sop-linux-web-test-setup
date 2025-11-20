@@ -276,12 +276,4 @@ Mozilla Web Security Guidelines
 
 Revision History
 Version	Date	Author	Changes
-1.0	2023-10-26	John Smith	Initial Release
-1.1	2023-11-15	Maria Garcia	Added containerization section
-1.2	2024-01-10	Robert Chen	Updated security guidelines
-Document Control
-This document is maintained by the DevOps Team.
-For suggestions or modifications, contact: devops@company.com
-
-Confidentiality Notice
-This document contains proprietary information and is intended for internal use only.
+1.0	2025-11-19	Yihan Liu	Initial Release of Document
