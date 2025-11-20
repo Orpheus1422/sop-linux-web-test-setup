@@ -275,4 +275,4 @@ Mozilla Web Security Guidelines
 Revision History
 | Version | Date | Author | Changes |
 |------|------|------------|------|
-| Author | Yihan Liu | | 2025-11-19 |
+| Author | 2025-11-19 |Yihan Liu | Initial Release |
