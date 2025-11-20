@@ -204,9 +204,11 @@ server {
     server_name web-test-app-01;
     root /var/www/html;
     index index.php index.html;
+
     location / {
         try_files $uri $uri/ =404;
     }
+
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
