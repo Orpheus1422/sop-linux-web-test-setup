@@ -2,8 +2,8 @@
 # Standard Operating Procedure: Setup a Virtual Linux Server for Web Application Testing
 
 **Document Version:** 1.0  
-**Effective Date:** October 26, 2023  
-**Author:** DevOps Team  
+**Effective Date:** November 19, 2025  
+**Author:** Yihan Liu  
 **Status:** Approved
 
 ---
@@ -12,9 +12,7 @@
 
 | Role | Name | Signature | Date |
 |------|------|------------|------|
-| Author | John Smith | | 2023-10-26 |
-| Reviewer | Maria Garcia | | 2023-10-27 |
-| Approver | Robert Chen | | 2023-10-28 |
+| Author | Yihan Liu | | 2025-11-19 |
 
 ---
 
