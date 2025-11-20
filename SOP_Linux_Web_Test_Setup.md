@@ -273,5 +273,6 @@ MariaDB Knowledge Base
 Mozilla Web Security Guidelines
 
 Revision History
-Version	Date	Author	Changes
-1.0	2025-11-19	Yihan Liu	Initial Release of Document
+| Version | Date | Author | Changes |
+|------|------|------------|------|
+| Author | Yihan Liu | | 2025-11-19 |
